@@ -24,7 +24,9 @@
       A789: [],
       A147: [],
       A258: [],
-      A369: []
+      A369: [],
+      logs: [],
+      kaigyo: '\n'
     },
     methods: {
       gameStart: function() {
@@ -51,6 +53,7 @@
             this.A147 = [];
             this.A258 = [];
             this.A369 = [];
+            this.log = [];
             this.startSetup();
           } else {
           }
@@ -116,6 +119,7 @@
           this.H147 = this.checkHit(t147, this.A147);
           this.H258 = this.checkHit(t258, this.A258);
           this.H369 = this.checkHit(t369, this.A369);
+          let now_log = this.logs.push(one + ' ' + two + ' ' + three + ' ' + this.H123 + ' ' + this.B123 + this.kaigyo + four + ' ' + five + ' ' + six + ' ' + this.H456 + ' ' + this.B456 + this.kaigyo + seven + ' ' + eight + ' ' + nine + ' ' + this.H789 + ' ' + this.B789 + this.kaigyo + this.H147 + ' ' + this.H258 + ' ' + this.H369 + 'H B' + this.kaigyo + this.B147 + ' ' + this.B258 + ' ' + this.B369 + 'B *');
         } else {
           alert('ゲームが開始されていません。「ゲームスタート/ゲームリセット」をクリックしてください')
         };
