@@ -6,12 +6,20 @@
   </head>
   <body>
     <h1>シンプルコードブレイカー</h1>
-    <table>
-      <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td>1</td><td>1</td></tr>
-      <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td>1</td><td>1</td></tr>
-      <tr><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td>1</td><td>1</td></tr>
-      <tr><td>1</td><td>1</td><td>1</td><th>H</th><th>B</th></tr>
-      <tr><td>1</td><td>1</td><td>1</td><th>B</th><th>*</th></tr>
-    </table>
+    <div id="app">
+      <input type="button" value="ゲームスタート/ゲームリセット" @click="gameStart"> 現在の試行回数: {{ count }}
+      <form name="main" @submit.prevent="checkCode">
+        <table>
+          <tr><td><input type="number" id="1"></td><td><input type="number" id="2"></td><td><input type="number" id="3"></td><td>{{ H123 }}</td><td>{{ B123 }}</td></tr>
+          <tr><td><input type="number" id="4"></td><td><input type="number" id="5"></td><td><input type="number" id="6"></td><td>{{ H456 }}</td><td>{{ B456 }}</td></tr>
+          <tr><td><input type="number" id="7"></td><td><input type="number" id="8"></td><td><input type="number" id="9"></td><td>{{ H789 }}</td><td>{{ B789 }}</td></tr>
+          <tr><td>{{ H147 }}</td><td>{{ H258 }}</td><td>{{ H369 }}</td><th>H</th><th>B</th></tr>
+          <tr><td>{{ B147 }}</td><td>{{ B258 }}</td><td>{{ B369 }}</td><th>B</th><th>*</th></tr>
+        </table>
+        <input type="submit" value="判定">
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
