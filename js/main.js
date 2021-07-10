@@ -119,7 +119,19 @@
           this.H147 = this.checkHit(t147, this.A147);
           this.H258 = this.checkHit(t258, this.A258);
           this.H369 = this.checkHit(t369, this.A369);
-          let now_log = this.logs.push(one + ' ' + two + ' ' + three + ' ' + this.H123 + ' ' + this.B123 + this.kaigyo + four + ' ' + five + ' ' + six + ' ' + this.H456 + ' ' + this.B456 + this.kaigyo + seven + ' ' + eight + ' ' + nine + ' ' + this.H789 + ' ' + this.B789 + this.kaigyo + this.H147 + ' ' + this.H258 + ' ' + this.H369 + 'H B' + this.kaigyo + this.B147 + ' ' + this.B258 + ' ' + this.B369 + 'B *');
+          this.B123 = this.checkBlow(t123, this.A123, this.H123);
+          this.B456 = this.checkBlow(t456, this.A456, this.H456);
+          this.B789 = this.checkBlow(t789, this.A789, this.H789);
+          this.B147 = this.checkBlow(t147, this.A147, this.H147);
+          this.B258 = this.checkBlow(t258, this.A258, this.H258);
+          this.B369 = this.checkBlow(t369, this.A369, this.H369);
+          let now_log = this.logs.push(one + ' ' + two + ' ' + three + ' ' + this.H123 + ' ' + this.B123 + this.kaigyo + four + ' ' + five + ' ' + six + ' ' + this.H456 + ' ' + this.B456 + this.kaigyo + seven + ' ' + eight + ' ' + nine + ' ' + this.H789 + ' ' + this.B789 + this.kaigyo + this.H147 + ' ' + this.H258 + ' ' + this.H369 + ' H B' + this.kaigyo + this.B147 + ' ' + this.B258 + ' ' + this.B369 + ' B *' + this.kaigyo + ' ');
+          this.count = Number(this.count) + 1;
+          let result = this.H123 + this.H456 + this.H789 + this.H147 + this.H258 + this.H369
+          console.log(result);
+          if ( result == 18 ) {
+            alert('クリア!')
+          }
         } else {
           alert('ゲームが開始されていません。「ゲームスタート/ゲームリセット」をクリックしてください')
         };
@@ -139,6 +151,18 @@
           }
         }
         return hit
+      },
+      checkBlow: function(target, answer, hit) {
+        let blow = 0;
+        for (let i = 0; i < 3; i++) {
+          for (let i2 = 0; i2 < 3; i2++) {
+            if (answer[i] == target[i2]) {
+              blow = blow + 1;
+            }
+          }
+        }
+        blow = blow - hit
+        return blow
       }
     }
   });
