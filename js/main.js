@@ -4,6 +4,7 @@
   let vm = new Vue({
     el: '#app',
     data: {
+      ans: [0,0,0,0,0,0,0,0,0],
       H123: '',
       B123: '',
       H456: '',
@@ -33,6 +34,7 @@
         if (this.game == true) {
           if (confirm('ゲーム中です。リセットしてもよろしいですか？')) {
             document.main.reset();
+            this.ans = [0,0,0,0,0,0,0,0,0];
             this.answer = [0,0,0,0,0,0,0,0,0];
             this.count = 0;
             this.H123 = '';
@@ -98,21 +100,12 @@
       },
       checkCode: function() {
         if (this.game == true) {
-          let one = document.getElementById('1').value;
-          let two = document.getElementById('2').value;
-          let three = document.getElementById('3').value;
-          let four = document.getElementById('4').value;
-          let five = document.getElementById('5').value;
-          let six = document.getElementById('6').value;
-          let seven = document.getElementById('7').value;
-          let eight = document.getElementById('8').value;
-          let nine = document.getElementById('9').value;
-          let t123 = this.makeArray(one, two, three);
-          let t456 = this.makeArray(four, five, six);
-          let t789 = this.makeArray(seven, eight, nine);
-          let t147 = this.makeArray(one, four, seven);
-          let t258 = this.makeArray(two, five, eight);
-          let t369 = this.makeArray(three, six, nine);
+          let t123 = this.makeArray(this.ans[0], this.ans[1], this.ans[2]);
+          let t456 = this.makeArray(this.ans[3], this.ans[4], this.ans[5]);
+          let t789 = this.makeArray(this.ans[6], this.ans[7], this.ans[8]);
+          let t147 = this.makeArray(this.ans[0], this.ans[3], this.ans[6]);
+          let t258 = this.makeArray(this.ans[1], this.ans[4], this.ans[7]);
+          let t369 = this.makeArray(this.ans[3], this.ans[5], this.ans[8]);
           this.H123 = this.checkHit(t123, this.A123);
           this.H456 = this.checkHit(t456, this.A456);
           this.H789 = this.checkHit(t789, this.A789);
@@ -125,7 +118,7 @@
           this.B147 = this.checkBlow(t147, this.A147, this.H147);
           this.B258 = this.checkBlow(t258, this.A258, this.H258);
           this.B369 = this.checkBlow(t369, this.A369, this.H369);
-          let now_log = this.logs.push(one + ' ' + two + ' ' + three + ' ' + this.H123 + ' ' + this.B123 + this.kaigyo + four + ' ' + five + ' ' + six + ' ' + this.H456 + ' ' + this.B456 + this.kaigyo + seven + ' ' + eight + ' ' + nine + ' ' + this.H789 + ' ' + this.B789 + this.kaigyo + this.H147 + ' ' + this.H258 + ' ' + this.H369 + ' H B' + this.kaigyo + this.B147 + ' ' + this.B258 + ' ' + this.B369 + ' B *' + this.kaigyo + ' ');
+          let now_log = this.logs.push(this.ans[0] + ' ' + this.ans[1] + ' ' + this.ans[2] + ' ' + this.H123 + ' ' + this.B123 + this.kaigyo + this.ans[3] + ' ' + this.ans[4] + ' ' + this.ans[5] + ' ' + this.H456 + ' ' + this.B456 + this.kaigyo + this.ans[6] + ' ' + this.ans[7] + ' ' + this.ans[8] + ' ' + this.H789 + ' ' + this.B789 + this.kaigyo + this.H147 + ' ' + this.H258 + ' ' + this.H369 + ' H B' + this.kaigyo + this.B147 + ' ' + this.B258 + ' ' + this.B369 + ' B *' + this.kaigyo + ' ');
           this.count = Number(this.count) + 1;
           let result = this.H123 + this.H456 + this.H789 + this.H147 + this.H258 + this.H369
           console.log(result);
@@ -163,6 +156,19 @@
         }
         blow = blow - hit
         return blow
+      },
+      nextNum: function(num) {
+        let kari = 0;
+        if(this.ans[num] == 9) {
+          this.$set(this.ans, num, 1)
+          this.ans[num] = 1;
+        } else {
+          kari = this.ans[num] + 1;
+          this.$set(this.ans, num, kari)
+        }
+        console.log(this.ans[num]);
+        console.log(this.ans);
+        return this.ans
       }
     }
   });

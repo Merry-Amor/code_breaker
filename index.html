@@ -11,9 +11,9 @@
       <input type="button" value="ゲームスタート/ゲームリセット" @click="gameStart"> 現在の試行回数: {{ count }}
       <form name="main" @submit.prevent="checkCode">
         <table>
-          <tr><td><input type="number" id="1"></td><td><input type="number" id="2"></td><td><input type="number" id="3"></td><td>{{ H123 }}</td><td>{{ B123 }}</td></tr>
-          <tr><td><input type="number" id="4"></td><td><input type="number" id="5"></td><td><input type="number" id="6"></td><td>{{ H456 }}</td><td>{{ B456 }}</td></tr>
-          <tr><td><input type="number" id="7"></td><td><input type="number" id="8"></td><td><input type="number" id="9"></td><td>{{ H789 }}</td><td>{{ B789 }}</td></tr>
+          <tr><td @click="nextNum(0)"><span>{{ ans[0] }}</span></td><td @click="nextNum(1)">{{ ans[1] }}</td><td @click="nextNum(2)">{{ ans[2] }}</td><td>{{ H123 }}</td><td>{{ B123 }}</td></tr>
+          <tr><td @click="nextNum(3)">{{ ans[3] }}</td><td @click="nextNum(4)">{{ ans[4] }}</td><td @click="nextNum(5)">{{ ans[5] }}</td><td>{{ H456 }}</td><td>{{ B456 }}</td></tr>
+          <tr><td @click="nextNum(6)">{{ ans[6] }}</td><td  @click="nextNum(7)">{{ ans[7] }}</td><td @click="nextNum(8)">{{ ans[8] }}</td><td>{{ H789 }}</td><td>{{ B789 }}</td></tr>
           <tr><td>{{ H147 }}</td><td>{{ H258 }}</td><td>{{ H369 }}</td><th>H</th><th>B</th></tr>
           <tr><td>{{ B147 }}</td><td>{{ B258 }}</td><td>{{ B369 }}</td><th>B</th><th>*</th></tr>
         </table>
