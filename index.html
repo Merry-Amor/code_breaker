@@ -8,7 +8,7 @@
   <body>
     <h1>シンプルコードブレイカー</h1>
     <div id="app">
-      <input type="button" value="ゲームスタート/ゲームリセット" @click="gameStart"> 現在の試行回数: {{ count }}
+      <input type="button" v-if="game" value="ゲームリセット" @click="gameStart"><input type="button" v-else value="ゲームスタート" @click="gameStart"> 現在の試行回数: {{ count }}
       <form name="main" @submit.prevent="checkCode">
         <table>
           <tr><td @click="nextNum(0)"><span>{{ ans[0] }}</span></td><td @click="nextNum(1)">{{ ans[1] }}</td><td @click="nextNum(2)">{{ ans[2] }}</td><td>{{ H123 }}</td><td>{{ B123 }}</td></tr>
@@ -17,7 +17,7 @@
           <tr><td>{{ H147 }}</td><td>{{ H258 }}</td><td>{{ H369 }}</td><th>H</th><th>B</th></tr>
           <tr><td>{{ B147 }}</td><td>{{ B258 }}</td><td>{{ B369 }}</td><th>B</th><th>*</th></tr>
         </table>
-        <input type="submit" value="判定">
+        <input v-if="game" type="submit" value="判定">
       </form>
       <p>試行ログ</p>
       <li v-for="log in logs" class="log">{{ log }}</li>
