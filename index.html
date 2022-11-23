@@ -9,20 +9,22 @@
     <h1>シンプルコードブレイカー</h1>
     <div id="app">
       <input type="button" v-if="game" value="ゲームリセット" @click="gameStart"><input type="button" v-else value="ゲームスタート" @click="gameStart"> 現在の試行回数: {{ count }}
-      <form name="main" @submit.prevent="checkCode">
-        <table>
-          <tr><td @click="nextNum(0)"><span>{{ ans[0] }}</span></td><td @click="nextNum(1)">{{ ans[1] }}</td><td @click="nextNum(2)">{{ ans[2] }}</td><td>{{ H123 }}</td><td>{{ B123 }}</td></tr>
-          <tr><td @click="nextNum(3)">{{ ans[3] }}</td><td @click="nextNum(4)">{{ ans[4] }}</td><td @click="nextNum(5)">{{ ans[5] }}</td><td>{{ H456 }}</td><td>{{ B456 }}</td></tr>
-          <tr><td @click="nextNum(6)">{{ ans[6] }}</td><td  @click="nextNum(7)">{{ ans[7] }}</td><td @click="nextNum(8)">{{ ans[8] }}</td><td>{{ H789 }}</td><td>{{ B789 }}</td></tr>
-          <tr><td>{{ H147 }}</td><td>{{ H258 }}</td><td>{{ H369 }}</td><th>H</th><th>B</th></tr>
-          <tr><td>{{ B147 }}</td><td>{{ B258 }}</td><td>{{ B369 }}</td><th>B</th><th>*</th></tr>
-        </table>
-        <input v-if="game" type="submit" value="判定">
-      </form>
-      <p>試行ログ</p>
-      <li v-for="log in logs" class="log">{{ log }}</li>
+        <template v-if="game">
+        <form name="main" @submit.prevent="checkCode">
+          <table>
+            <tr><td @click="nextNum(0)"><span>{{ ans[0] }}</span></td><td @click="nextNum(1)">{{ ans[1] }}</td><td @click="nextNum(2)">{{ ans[2] }}</td><td>{{ H123 }}</td><td>{{ B123 }}</td></tr>
+            <tr><td @click="nextNum(3)">{{ ans[3] }}</td><td @click="nextNum(4)">{{ ans[4] }}</td><td @click="nextNum(5)">{{ ans[5] }}</td><td>{{ H456 }}</td><td>{{ B456 }}</td></tr>
+            <tr><td @click="nextNum(6)">{{ ans[6] }}</td><td  @click="nextNum(7)">{{ ans[7] }}</td><td @click="nextNum(8)">{{ ans[8] }}</td><td>{{ H789 }}</td><td>{{ B789 }}</td></tr>
+            <tr><td>{{ H147 }}</td><td>{{ H258 }}</td><td>{{ H369 }}</td><th>H</th><th>B</th></tr>
+            <tr><td>{{ B147 }}</td><td>{{ B258 }}</td><td>{{ B369 }}</td><th>B</th><th>*</th></tr>
+          </table>
+          <input v-if="game" type="submit" value="判定">
+        </form>
+        <p>試行ログ</p>
+        <li v-for="log in logs" class="log">{{ log }}</li>
+      </template>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
