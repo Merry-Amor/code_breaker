@@ -2,3 +2,47 @@
   white-space: pre-wrap;
   list-style: none;
 }
+
+.button {
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 240px;
+  padding: 10px 25px;
+  color: #FFF;
+  transition: 0.1s ease-in-out;
+  font-weight: 600;
+  background: #6bb6ff;
+  border-radius: 8px;
+  border-bottom: solid 5px #1d7fde;
+}
+
+.button:active {
+  border-bottom: solid 2px #1d7fde;
+  transform: translateY(3px);
+}
+
+.hit {
+  color: green;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 240px;
+  padding: 10px 25px;
+  font-weight: 600;
+}
+
+.blow {
+  color: red;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 240px;
+  padding: 10px 25px;
+  font-weight: 600;
+}
+
+.flax-master {
+  display: flex;
+}
